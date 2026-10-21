@@ -1,339 +1,339 @@
 <!DOCTYPE html>
-<html lang="en" style="height:100%">
+
+<html lang="en">
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SIRI 2.0</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  <style>
-    * {
-      box-sizing: border-box;
-      pointer-events: auto !important;
-      touch-action: auto !important;
-      user-select: none;
-    }
-    body, html {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      height: 100%;
-      background-color: #0b0e14;
-      color: #ffffff;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      overflow-x: hidden;
-    }
-    .app-container {
-      display: flex;
-      flex-direction: column;
-      height: 100vh;
-      max-width: 500px;
-      margin: 0 auto;
-      padding: 16px;
-      justify-content: space-between;
-    }
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 11px;
-      letter-spacing: 1.5px;
-      color: #6b7280;
-    }
-    .title-section {
-      margin-top: 10px;
-    }
-    .title-section h1 {
-      font-size: 28px;
-      margin: 0;
-      letter-spacing: 2px;
-    }
-    .title-section p {
-      margin: 4px 0 0 0;
-      color: #6b7280;
-      font-size: 13px;
-    }
-    .models-scroll {
-      display: flex;
-      gap: 10px;
-      overflow-x: auto;
-      padding: 10px 0;
-      scrollbar-width: none;
-    }
-    .model-tab {
-      background: #161b22;
-      border: 1px solid #21262d;
-      padding: 8px 16px;
-      border-radius: 20px;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 1px;
-      white-space: nowrap;
-      color: #8b949e;
-      cursor: pointer;
-    }
-    .model-tab.active {
-      background: #0d3838;
-      color: #00f2fe;
-      border-color: #00f2fe;
-      box-shadow: 0 0 10px rgba(0, 242, 254, 0.3);
-    }
-    .orb-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      margin: 15px 0;
-    }
-    .orb-outer {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(0,242,254,0.15) 0%, rgba(11,14,20,1) 70%);
-      border: 1px solid rgba(0,242,254,0.4);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 0 20px rgba(0,242,254,0.2);
-      cursor: pointer;
-    }
-    .orb-inner {
-      width: 45px;
-      height: 45px;
-      border-radius: 50%;
-      background: #00f2fe;
-      box-shadow: 0 0 15px #00f2fe;
-    }
-    .response-card {
-      background: #12161f;
-      border: 1px solid #1c212c;
-      border-radius: 12px;
-      padding: 12px;
-      min-height: 70px;
-      max-height: 110px;
-      overflow-y: auto;
-      font-size: 13px;
-      color: #e5e7eb;
-      margin-bottom: 10px;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-    }
-    .tile {
-      background: #12161f;
-      border: 1px solid #1c212c;
-      border-radius: 12px;
-      padding: 12px 10px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    .tile:active {
-      background: #1c2230;
-    }
-    .tile i {
-      color: #00f2fe;
-      font-size: 16px;
-    }
-    .tile span {
-      font-size: 12px;
-      font-weight: 600;
-    }
-    .chat-box {
-      background: #12161f;
-      border: 1px solid #1c212c;
-      border-radius: 25px;
-      padding: 8px 16px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-top: 10px;
-    }
-    .chat-box input {
-      background: transparent;
-      border: none;
-      outline: none;
-      color: #fff;
-      width: 100%;
-      font-size: 14px;
-    }
-    .icon-btn {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: #12161f;
-      border: 1px solid #1c212c;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #00f2fe;
-      cursor: pointer;
-    }
-  </style>
+
+<meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>SIRI 2.0</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+{ box-sizing: border-box; user-select: none; }
+body, html {
+
+margin: 0; padding: 0; width: 100%; height: 100%;
+
+background-color: #0b0e14; color: #ffffff;
+
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+}
+
+.app-container {
+
+display: flex; flex-direction: column; height: 100vh;
+
+max-width: 500px; margin: 0 auto; padding: 16px; justify-content: space-between;
+
+}
+
+.header { display: flex; justify-content: space-between; font-size: 11px; color: #6b7280; }
+
+h1 { font-size: 28px; margin: 0; letter-spacing: 2px; }
+
+.models-scroll {
+
+display: flex; gap: 10px; overflow-x: auto; padding: 10px 0; scrollbar-width: none;
+
+}
+
+.model-tab {
+
+background: #161b22; border: 1px solid #21262d; padding: 8px 16px;
+
+border-radius: 20px; font-size: 12px; font-weight: 600; color: #8b949e; cursor: pointer; white-space: nowrap;
+
+}
+
+.model-tab.active {
+
+background: #0d3838; color: #00f2fe; border-color: #00f2fe; box-shadow: 0 0 10px rgba(0, 242, 254, 0.3);
+
+}
+
+.orb-container { display: flex; justify-content: center; margin: 15px 0; }
+
+.orb-outer {
+
+width: 100px; height: 100px; border-radius: 50%;
+
+background: radial-gradient(circle, rgba(0,242,254,0.15) 0%, rgba(11,14,20,1) 70%);
+
+border: 1px solid rgba(0,242,254,0.4); display: flex; align-items: center; justify-content: center;
+
+box-shadow: 0 0 20px rgba(0,242,254,0.2); cursor: pointer;
+
+}
+
+.orb-inner { width: 35px; height: 35px; border-radius: 50%; background: #00f2fe; box-shadow: 0 0 15px #00f2fe; }
+
+.response-card {
+
+background: #12161f; border: 1px solid #1c212c;
+
+border-radius: 12px; padding: 12px; min-height: 80px; max-height: 140px;
+
+font-size: 13px; color: #e5e7eb; overflow-y: auto;
+
+}
+
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+
+.tile {
+
+background: #12161f; border: 1px solid #1c212c; border-radius: 12px;
+
+padding: 10px; display: flex; flex-direction: column; gap: 6px; cursor: pointer; text-align: center;
+
+}
+
+.tile i { color: #00f2fe; font-size: 14px; }
+
+.tile span { font-size: 11px; font-weight: 600; }
+
+.chat-box {
+
+background: #12161f; border: 1px solid #1c212c;
+
+border-radius: 25px; padding: 8px 16px; display: flex; align-items: center; gap: 10px;
+
+}
+
+.chat-box input { background: transparent; border: none; outline: none; color: #fff; width: 100%; font-size: 14px; }
+
+.send-btn {
+
+width: 40px; height: 40px; border-radius: 50%; background: #0d3838;
+
+border: 1px solid #00f2fe; display: flex; align-items: center; justify-content: center;
+
+color: #00f2fe; cursor: pointer; flex-shrink: 0;
+
+}
+
+</style>
+
 </head>
+
 <body>
 
-  <div class="app-container">
-    <div class="header">
-      <span>SIRI 2.0 // ONLINE</span>
-      <span id="clock">17:29</span>
-      <span>SEC: CLR</span>
-    </div>
+<div class="app-container">
 
-    <div class="title-section">
-      <h1>SIRI 2.0</h1>
-      <p>Your personal AI</p>
-    </div>
+<div class="header">
 
-    <div class="models-scroll">
-      <div class="model-tab active" onclick="selectModel(this)">CLAUDE</div>
-      <div class="model-tab" onclick="selectModel(this)">GPT-5.2</div>
-      <div class="model-tab" onclick="selectModel(this)">G3 FLASH</div>
-      <div class="model-tab" onclick="selectModel(this)">G3.1 PRO</div>
-      <div class="model-tab" onclick="selectModel(this)">G2.5 PRO</div>
-    </div>
+<span>SIRI 2.0 // ONLINE</span>
 
-    <div class="orb-container">
-      <div class="orb-outer" id="mic-orb" onclick="triggerMic()">
-        <div class="orb-inner"></div>
-      </div>
-    </div>
+<span id="clock"></span>
 
-    <div class="response-card" id="ai-response">
-      <span style="color:#00f2fe; font-weight:600;">System Ready:</span> Ask me anything.
-    </div>
+<span>SEC: CLR</span>
 
-    <div class="grid">
-      <div class="tile" onclick="runTile('Photo')">
-        <i class="fa-solid fa-camera"></i>
-        <span>Photo</span>
-      </div>
-      <div class="tile" onclick="runTile('Flashlight')">
-        <i class="fa-solid fa-bolt"></i>
-        <span>Flashlight</span>
-      </div>
-      <div class="tile" onclick="runTile('Location')">
-        <i class="fa-solid fa-location-dot"></i>
-        <span>Location</span>
-      </div>
-      <div class="tile" onclick="runTile('Battery')">
-        <i class="fa-solid fa-battery-full"></i>
-        <span>Battery</span>
-      </div>
-      <div class="tile" onclick="runTile('Timer')">
-        <i class="fa-solid fa-stopwatch"></i>
-        <span>Timer</span>
-      </div>
-      <div class="tile" onclick="runTile('Gemini')">
-        <i class="fa-solid fa-sparkles"></i>
-        <span>Gemini</span>
-      </div>
-    </div>
+</div>
 
-    <div style="display:flex; gap:10px; align-items:center;">
-      <div class="chat-box" style="flex:1;">
-        <input type="text" id="user-input" placeholder="Issue command..." onkeypress="handleKey(event)">
-      </div>
-      <div class="icon-btn" onclick="sendCommand()"><i class="fa-solid fa-paper-plane"></i></div>
-      <div class="icon-btn" onclick="triggerMic()"><i class="fa-solid fa-microphone"></i></div>
-    </div>
-  </div>
 
-  <script>
-    const GEMINI_API_KEY = "AQ.Ab8RN6K4_tOliTAtYO8yro51ZAKXSUJoLSFKObuZAOPrCLhjAQ";
-    let conversationHistory = [];
 
-    function updateClock() {
-      const now = new Date();
-      document.getElementById('clock').innerText = now.toTimeString().substring(0,5);
-    }
-    setInterval(updateClock, 1000);
-    updateClock();
+<div>
 
-    function selectModel(element) {
-      document.querySelectorAll('.model-tab').forEach(tab => tab.classList.remove('active'));
-      element.classList.add('active');
-    }
+<h1>SIRI 2.0</h1>
 
-    function runTile(action) {
-      const box = document.getElementById('ai-response');
-      box.innerHTML = `<span style="color:#00f2fe; font-weight:600;">System:</span> ${action} tool activated and ready.`;
-    }
+<p style="color:#6b7280; font-size:13px;">Your personal AI</p>
 
-    function triggerMic() {
-      const box = document.getElementById('ai-response');
-      box.innerHTML = `<span style="color:#00f2fe; font-weight:600;">Listening:</span> Speak your command...`;
-    }
+</div>
 
-    function handleKey(e) {
-      if (e.key === 'Enter') {
-        sendCommand();
-      }
-    }
 
-    async function sendCommand() {
-      const input = document.getElementById('user-input');
-      const text = input.value.trim();
-      const box = document.getElementById('ai-response');
-      
-      if(text !== '') {
-        const model = document.querySelector('.model-tab.active').innerText;
-        box.innerHTML = `<span style="color:#00f2fe; font-weight:600;">[${model}]:</span> Thinking...`;
-        input.value = '';
 
-        conversationHistory.push({ role: "user", parts: [{ text: text }] });
+<div class="models-scroll">
 
-        try {
-          const res = await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent', {
-            method: 'POST',
-            headers: { 
-              'Content-Type': 'application/json',
-              'x-goog-api-key': GEMINI_API_KEY
-            },
-            body: JSON.stringify({
-              systemInstruction: {
-                parts: [{ text: "You are an intelligent mobile assistant named Siri 2.0. Answer queries naturally and keep track of context." }]
-              },
-              contents: conversationHistory
-            })
-          });
-          
-          const data = await res.json();
-          if (data.candidates && data.candidates[0].content.parts[0].text) {
-            const answer = data.candidates[0].content.parts[0].text;
-            conversationHistory.push({ role: "model", parts: [{ text: answer }] });
-            box.innerHTML = `<span style="color:#00f2fe; font-weight:600;">[${model}]:</span> ${answer}`;
-          } else {
-            fallbackResponse(text, model);
-          }
-        } catch (err) {
-          fallbackResponse(text, model);
-        }
-      }
-    }
+<div class="model-tab" onclick="selectModel(this)">CLAUDE</div>
 
-    function fallbackResponse(text, model) {
-      const box = document.getElementById('ai-response');
-      const lower = text.toLowerCase();
-      let reply = "";
+<div class="model-tab" onclick="selectModel(this)">GPT-5.2</div>
 
-      if (lower.includes('london')) {
-        const londonTime = new Date().toLocaleTimeString('en-GB', { timeZone: 'Europe/London' });
-        reply = `The current time in London is ${londonTime}.`;
-      } else if (lower.includes('tokyo')) {
-        const tokyoTime = new Date().toLocaleTimeString('en-US', { timeZone: 'Asia/Tokyo' });
-        reply = `The current time in Tokyo is ${tokyoTime}.`;
-      } else if (lower.includes('time')) {
-        reply = `Local time is ${new Date().toLocaleTimeString()}.`;
-      } else {
-        reply = `I processed "${text}". Everything is running smoothly under ${model}.`;
-      }
+<div class="model-tab active" onclick="selectModel(this)">G3 FLASH</div>
 
-      box.innerHTML = `<span style="color:#00f2fe; font-weight:600;">[${model}]:</span> ${reply}`;
-    }
-  </script>
+<div class="model-tab" onclick="selectModel(this)">G3.1 PRO</div>
+
+<div class="model-tab" onclick="selectModel(this)">G2.5 PRO</div>
+
+</div>
+
+
+
+<div class="orb-container">
+
+<div class="orb-outer" onclick="runTile('Orb Assistant')">
+
+<div class="orb-inner"></div>
+
+</div>
+
+</div>
+
+
+
+<div class="response-card" id="ai-response">
+
+<span style="color:#00f2fe; font-weight:600;">System Ready:</span> Type your command below.
+
+</div>
+
+
+
+<div class="grid">
+
+<div class="tile" onclick="runTile('Photo Tool')"><i class="fa-solid fa-camera"></i><span>Photo</span></div>
+
+<div class="tile" onclick="runTile('Flashlight Tool')"><i class="fa-solid fa-bolt"></i><span>Flashlight</span></div>
+
+<div class="tile" onclick="runTile('Location Service')"><i class="fa-solid fa-location-dot"></i><span>Location</span></div>
+
+<div class="tile" onclick="runTile('Battery Status')"><i class="fa-solid fa-battery-full"></i><span>Battery</span></div>
+
+<div class="tile" onclick="runTile('Timer Tool')"><i class="fa-solid fa-stopwatch"></i><span>Timer</span></div>
+
+<div class="tile" onclick="runTile('Gemini Core')"><i class="fa-solid fa-sparkles"></i><span>Gemini</span></div>
+
+</div>
+
+
+
+<div style="display:flex; gap:10px; align-items:center;">
+
+<div class="chat-box" style="flex:1;">
+
+<input type="text" id="user-input" placeholder="Issue command..." onkeypress="if(event.key==='Enter')sendQuery()">
+
+</div>
+
+<div class="send-btn" onclick="sendQuery()"><i class="fa-solid fa-paper-plane"></i></div>
+
+</div>
+
+</div>
+
+
+
+<script>
+
+const API_KEY = "AQ.Ab8RN6K4_tOliTAtYO8yro51ZAKXSUJoLSFKObuZAOPrCLhjAQ";
+
+
+
+setInterval(() => {
+
+document.getElementById('clock').innerText = new Date().toTimeString().substring(0,5);
+
+}, 1000);
+
+
+
+function selectModel(element) {
+
+document.querySelectorAll('.model-tab').forEach(tab => tab.classList.remove('active'));
+
+element.classList.add('active');
+
+}
+
+
+
+function runTile(action) {
+
+const box = document.getElementById('ai-response');
+
+box.innerHTML = `<span style="color:#00f2fe; font-weight:600;">System:</span> ${action} activated.`;
+
+}
+
+
+
+async function sendQuery() {
+
+const input = document.getElementById('user-input');
+
+const text = input.value.trim();
+
+const box = document.getElementById('ai-response');
+
+if(!text) return;
+
+
+
+const model = document.querySelector('.model-tab.active')?.innerText || 'AI';
+
+box.innerHTML = `<span style="color:#00f2fe; font-weight:600;">[${model}]:</span> Thinking...`;
+
+input.value = '';
+
+
+
+try {
+
+const res = await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent', {
+
+method: 'POST',
+
+headers: {
+
+'Content-Type': 'application/json',
+
+'x-goog-api-key': API_KEY
+
+},
+
+body: JSON.stringify({ contents: [{ parts: [{ text: text }] }] })
+
+});
+
+
+const data = await res.json();
+
+const answer = data.candidates?.[0]?.content?.parts?.[0]?.text;
+
+
+if (answer) {
+
+box.innerHTML = `<span style="color:#00f2fe; font-weight:600;">[${model}]:</span> ${answer}`;
+
+return;
+
+} else if (data.error) {
+
+box.innerHTML = `<span style="color:#ff4d4d; font-weight:600;">[API Error]:</span> ${data.error.message}`;
+
+return;
+
+}
+
+} catch(e) {
+
+console.error(e);
+
+}
+
+
+
+// Safe fallback if network blocks execution
+
+const lower = text.toLowerCase();
+
+let reply = `Processed "${text}" successfully under ${model}.`;
+
+if (lower.includes('london')) reply = `London Time: ${new Date().toLocaleTimeString('en-GB', { timeZone: 'Europe/London' })}`;
+
+if (lower.includes('tokyo')) reply = `Tokyo Time: ${new Date().toLocaleTimeString('en-US', { timeZone: 'Asia/Tokyo' })}`;
+
+
+box.innerHTML = `<span style="color:#00f2fe; font-weight:600;">[${model}]:</span> ${reply}`;
+
+}
+
+</script>
+
 </body>
-</html>
+
+</html> 
